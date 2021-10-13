@@ -1,0 +1,16 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+FCLK	start.S	/^		FCLK = 2*m*Fin\/(p*2^s) = 399.6Mhz ≈ 400Mhz$/;"	d
+GPFCON	led.c	/^#define GPFCON /;"	d	file:
+GPFDAT	led.c	/^#define GPFDAT /;"	d	file:
+_start	start.S	/^_start:$/;"	l
+delay	led.c	/^void delay(unsigned int count){$/;"	f
+halt	start.S	/^halt:	$/;"	l
+m	start.S	/^		m = MDIV+8 = 100$/;"	d
+main	led.c	/^int main()$/;"	f
+p	start.S	/^		p = PDIV+2 = 3$/;"	d
+s	start.S	/^		s = SDIV   = 1$/;"	d

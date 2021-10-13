@@ -1,0 +1,135 @@
+
+led.elf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	e3a00453 	mov	r0, #1392508928	; 0x53000000
+   4:	e3a01000 	mov	r1, #0
+   8:	e5801000 	str	r1, [r0]
+   c:	e3a00313 	mov	r0, #1275068416	; 0x4c000000
+  10:	e3e01000 	mvn	r1, #0
+  14:	e5801000 	str	r1, [r0]
+  18:	e59f0044 	ldr	r0, [pc, #68]	; 64 <halt+0x4>
+  1c:	e3a01005 	mov	r1, #5
+  20:	e5801000 	str	r1, [r0]
+  24:	ee110f10 	mrc	15, 0, r0, cr1, cr0, {0}
+  28:	e3800103 	orr	r0, r0, #-1073741824	; 0xc0000000
+  2c:	ee010f10 	mcr	15, 0, r0, cr1, cr0, {0}
+  30:	e59f002c 	ldr	r0, [pc, #44]	; 64 <halt+0x4>
+  34:	e59f102c 	ldr	r1, [pc, #44]	; 68 <halt+0x8>
+  38:	e5801000 	str	r1, [r0]
+  3c:	e3a01000 	mov	r1, #0
+  40:	e5910000 	ldr	r0, [r1]
+  44:	e5811000 	str	r1, [r1]
+  48:	e5912000 	ldr	r2, [r1]
+  4c:	e1510002 	cmp	r1, r2
+  50:	e59fd014 	ldr	sp, [pc, #20]	; 6c <halt+0xc>
+  54:	03a0da01 	moveq	sp, #4096	; 0x1000
+  58:	05810000 	streq	r0, [r1]
+  5c:	eb000012 	bl	ac <main>
+
+00000060 <halt>:
+  60:	eafffffe 	b	60 <halt>
+  64:	4c000014 	stcmi	0, cr0, [r0], {20}
+  68:	0005c011 	andeq	ip, r5, r1, lsl r0
+  6c:	40001000 	andmi	r1, r0, r0
+
+00000070 <delay>:
+  70:	e52db004 	push	{fp}		; (str fp, [sp, #-4]!)
+  74:	e28db000 	add	fp, sp, #0
+  78:	e24dd00c 	sub	sp, sp, #12
+  7c:	e50b0008 	str	r0, [fp, #-8]
+  80:	e1a00000 	nop			; (mov r0, r0)
+  84:	e51b3008 	ldr	r3, [fp, #-8]
+  88:	e2432001 	sub	r2, r3, #1
+  8c:	e50b2008 	str	r2, [fp, #-8]
+  90:	e3530000 	cmp	r3, #0
+  94:	1afffffa 	bne	84 <delay+0x14>
+  98:	e1a00000 	nop			; (mov r0, r0)
+  9c:	e1a00000 	nop			; (mov r0, r0)
+  a0:	e28bd000 	add	sp, fp, #0
+  a4:	e49db004 	pop	{fp}		; (ldr fp, [sp], #4)
+  a8:	e12fff1e 	bx	lr
+
+000000ac <main>:
+  ac:	e92d4800 	push	{fp, lr}
+  b0:	e28db004 	add	fp, sp, #4
+  b4:	e24dd008 	sub	sp, sp, #8
+  b8:	e3a03000 	mov	r3, #0
+  bc:	e50b3008 	str	r3, [fp, #-8]
+  c0:	e59f307c 	ldr	r3, [pc, #124]	; 144 <main+0x98>
+  c4:	e5933000 	ldr	r3, [r3]
+  c8:	e59f2074 	ldr	r2, [pc, #116]	; 144 <main+0x98>
+  cc:	e3c33c3f 	bic	r3, r3, #16128	; 0x3f00
+  d0:	e5823000 	str	r3, [r2]
+  d4:	e59f3068 	ldr	r3, [pc, #104]	; 144 <main+0x98>
+  d8:	e5933000 	ldr	r3, [r3]
+  dc:	e59f2060 	ldr	r2, [pc, #96]	; 144 <main+0x98>
+  e0:	e3833c15 	orr	r3, r3, #5376	; 0x1500
+  e4:	e5823000 	str	r3, [r2]
+  e8:	e59f3058 	ldr	r3, [pc, #88]	; 148 <main+0x9c>
+  ec:	e5933000 	ldr	r3, [r3]
+  f0:	e59f2050 	ldr	r2, [pc, #80]	; 148 <main+0x9c>
+  f4:	e3c33070 	bic	r3, r3, #112	; 0x70
+  f8:	e5823000 	str	r3, [r2]
+  fc:	e59f3044 	ldr	r3, [pc, #68]	; 148 <main+0x9c>
+ 100:	e5932000 	ldr	r2, [r3]
+ 104:	e51b3008 	ldr	r3, [fp, #-8]
+ 108:	e1a03203 	lsl	r3, r3, #4
+ 10c:	e59f1034 	ldr	r1, [pc, #52]	; 148 <main+0x9c>
+ 110:	e1823003 	orr	r3, r2, r3
+ 114:	e5813000 	str	r3, [r1]
+ 118:	e51b3008 	ldr	r3, [fp, #-8]
+ 11c:	e2833001 	add	r3, r3, #1
+ 120:	e50b3008 	str	r3, [fp, #-8]
+ 124:	e59f0020 	ldr	r0, [pc, #32]	; 14c <main+0xa0>
+ 128:	ebffffd0 	bl	70 <delay>
+ 12c:	e51b3008 	ldr	r3, [fp, #-8]
+ 130:	e3530008 	cmp	r3, #8
+ 134:	1affffeb 	bne	e8 <main+0x3c>
+ 138:	e3a03001 	mov	r3, #1
+ 13c:	e50b3008 	str	r3, [fp, #-8]
+ 140:	eaffffe8 	b	e8 <main+0x3c>
+ 144:	56000050 			; <UNDEFINED> instruction: 0x56000050
+ 148:	56000054 			; <UNDEFINED> instruction: 0x56000054
+ 14c:	000186a0 	andeq	r8, r1, r0, lsr #13
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	3a434347 	bcc	10d0d24 <_stack+0x1050d24>
+   4:	4e472820 	cdpmi	8, 4, cr2, cr7, cr0, {1}
+   8:	72412055 	subvc	r2, r1, #85	; 0x55
+   c:	6d45206d 	stclvs	0, cr2, [r5, #-436]	; 0xfffffe4c
+  10:	64646562 	strbtvs	r6, [r4], #-1378	; 0xfffffa9e
+  14:	54206465 	strtpl	r6, [r0], #-1125	; 0xfffffb9b
+  18:	636c6f6f 	cmnvs	ip, #444	; 0x1bc
+  1c:	6e696168 	powvsez	f6, f1, #0.0
+  20:	2e303120 	rsfcssp	f3, f0, f0
+  24:	30322d33 	eorscc	r2, r2, r3, lsr sp
+  28:	302e3132 	eorcc	r3, lr, r2, lsr r1
+  2c:	31202937 			; <UNDEFINED> instruction: 0x31202937
+  30:	2e332e30 	mrccs	14, 1, r2, cr3, cr0, {1}
+  34:	30322031 	eorscc	r2, r2, r1, lsr r0
+  38:	36303132 			; <UNDEFINED> instruction: 0x36303132
+  3c:	28203132 	stmdacs	r0!, {r1, r4, r5, r8, ip, sp}
+  40:	656c6572 	strbvs	r6, [ip, #-1394]!	; 0xfffffa8e
+  44:	29657361 	stmdbcs	r5!, {r0, r5, r6, r8, r9, ip, sp, lr}^
+	...
+
+Disassembly of section .ARM.attributes:
+
+00000000 <.ARM.attributes>:
+   0:	00002541 	andeq	r2, r0, r1, asr #10
+   4:	61656100 	cmnvs	r5, r0, lsl #2
+   8:	01006962 	tsteq	r0, r2, ror #18
+   c:	0000001b 	andeq	r0, r0, fp, lsl r0
+  10:	00543405 	subseq	r3, r4, r5, lsl #8
+  14:	01080206 	tsteq	r8, r6, lsl #4
+  18:	04120109 	ldreq	r0, [r2], #-265	; 0xfffffef7
+  1c:	01150114 	tsteq	r5, r4, lsl r1
+  20:	01180317 	tsteq	r8, r7, lsl r3
+  24:	Address 0x0000000000000024 is out of bounds.
+
